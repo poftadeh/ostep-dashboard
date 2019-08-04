@@ -16,7 +16,7 @@ app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/data/:containerName', (req, res) => {
   console.log('in data', req.params.containerName);
-  request(req.params.containerName, (error, response, body) => {
+  request(`http://${req.params.containerName}`, (error, response, body) => {
     console.log('error=', error, 'error=', response, 'body=', body);
     res.json(body);
   });
