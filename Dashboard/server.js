@@ -5,17 +5,19 @@ const basicAuth = require('express-basic-auth');
 const { IpFilter, IpDeniedError } = require('express-ipfilter');
 const { whitelist, users } = require('../config-files/authentication');
 
-const PORT = process.env.PORT || 80;
+const PORT = process.env.PORT || 8080;
 const app = express();
 
-if (whitelist) {
-  app.use(IpFilter(whitelist, { mode: 'allow' }));
-}
+// if (whitelist) {
+//   app.use(IpFilter(whitelist, { mode: 'allow' }));
+// }
 
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/data/:containerName', (req, res) => {
-  request(req.params.containerName, (_error, _response, body) => {
+  console.log('in data', req.params.containerName);
+  request(req.params.containerName, (error, response, body) => {
+    console.log('error=', error, 'error=', response, 'body=', body);
     res.json(body);
   });
 });

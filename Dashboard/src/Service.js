@@ -7,6 +7,7 @@ class Service {
       cb(dummyData[containerName]);
     } else {
       http.get(`data/${containerName}`, res => {
+        console.log('route', `data/${containerName}`)
         res.setEncoding('utf8');
         let body = '';
 
