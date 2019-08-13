@@ -7,16 +7,28 @@ const { whitelist, users } = require('../config-files/authentication');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+const ipResultCheck = (err, req, res, next) => {
+  if (err) {
+    err instanceof IpDeniedError ? next() : next(err);
+  } else {
+    next();
+  }
+};
 
-if (whitelist) {
-  app.use(IpFilter(whitelist, { mode: 'allow' }));
-}
+//app.use('/', IpFilter(whitelist, { mode: 'allow' }));
 
 app.use(express.static(path.join(__dirname, 'build')));
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+app.get(
+  '/test',
+  IpFilter(whitelist, { mode: 'allow' }),
+  ipResultCheck,
+  basicAuth({ challenge: true, users })
+);
 
 app.get('/data/:containerName', (req, res, next) => {
   request(`http://${req.params.containerName}`, (error, _response, body) => {
@@ -25,7 +37,11 @@ app.get('/data/:containerName', (req, res, next) => {
   });
 });
 
-app.use((err, _req, res, next) => {
+app.use((req, res) => {
+  res.status(404).send('Page Not Found');
+});
+
+app.use((err, req, res, next) => {
   console.error('Error handler:', err);
   console.log('err status', err.status);
   if (err instanceof IpDeniedError) {
@@ -35,7 +51,7 @@ app.use((err, _req, res, next) => {
   }
 });
 
-app.use(basicAuth({ challenge: true, users }));
+//app.use(basicAuth({ challenge: true, users }));
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Dashboard container is listening on port ${PORT}`);
