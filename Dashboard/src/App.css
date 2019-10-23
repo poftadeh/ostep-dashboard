@@ -559,7 +559,7 @@ PR REMINDER PANEL
   border-radius: 2px;
   color: #ecf0f1;
   margin-right: .5rem;
-  padding: .3rem;
+  padding: .3rem .5rem;
   text-transform: capitalize;
 }
 
