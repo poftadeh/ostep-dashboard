@@ -121,6 +121,7 @@ export default class Reminder extends Container {
               age: { format },
               age: { count },
             } = pullRequest;
+
             return (
               <div key={`${pullRequest.title}`} className="github-pullRequest">
                 <div className="github-pullRequest__content">
@@ -130,22 +131,22 @@ export default class Reminder extends Container {
                       src={pullRequestIcon}
                       alt="Pull Request icon"
                     />
-                    <span className="github-pullRequest__repo github-pullRequest__label">
-                      {`[${pullRequest.repoName}]`}
-                    </span>
-                    <span
-                      className={`github-pullRequest__priority-${priority} github-pullRequest__label`}
-                    >
-                      {`[${priority}]`}
-                    </span>
                     <a
                       href={pullRequest.url}
-                      className="github-pullRequest__name github-pullRequest__label"
+                      className="github-pullRequest__name"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
                       {`#${pullRequest.number}: ${pullRequest.title}`}
-                    </a>{' '}
+                    </a>
+                    <span className="github-pullRequest__repo github-pullRequest__label">
+                      {pullRequest.repoName}
+                    </span>
+                    <span
+                      className={`github-pullRequest__priority-${priority} github-pullRequest__label`}
+                    >
+                      {priority}
+                    </span>
                   </div>
                   <div className="github-pullRequest__status">
                     <span className="github-pullRequest__time">{`${count} ${format}${

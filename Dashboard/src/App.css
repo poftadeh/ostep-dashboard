@@ -503,7 +503,7 @@ PR REMINDER PANEL
 
 .github-pullRequest {
   display: flex;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .github-pullRequest__inner {
@@ -546,7 +546,7 @@ PR REMINDER PANEL
 
 .github-pullRequest__description {
   margin-bottom: 0;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   margin-left: 2em;
   display: block;
   white-space: nowrap;
@@ -557,30 +557,29 @@ PR REMINDER PANEL
 
 .github-pullRequest__label {
   border-radius: 2px;
-  color: #ecf0f1;
-  margin-right: .5rem;
-  padding: .3rem .5rem;
+  margin-right: 0.5rem;
+  padding: 0.3rem 0.5rem;
   text-transform: capitalize;
 }
 
 .github-pullRequest__summary-label {
   background-color: #16a085;
-  color: #ecf0f1;
 }
 
 .github-pullRequest__repo {
-  color: #ecf0f1;
   background-color: #2980b9;
 }
 
 .github-pullRequest__name {
+  color: #ecf0f1;
   text-decoration: none;
-  background-color: #16a085;
+  font-weight: bold;
+  margin-right: 0.5rem;
 }
 
 .github-pullRequest__avatar {
   height: 2.5rem;
-  margin: .2rem .7rem;
+  margin: 0.2rem 0.7rem;
 }
 
 .github-pullRequest__reviewer {
@@ -595,11 +594,11 @@ PR REMINDER PANEL
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  margin: .5rem 0 1.2rem 0;
+  margin: 0.5rem 0 1.2rem 0;
 }
 
 .github-pullRequest__time {
-  margin-right: .4rem;
+  margin-right: 0.4rem;
 }
 
 /* 
