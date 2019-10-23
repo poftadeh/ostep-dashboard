@@ -209,7 +209,7 @@ export default {
       ],
       labels: [
         {
-          name: 'Priority: High',
+          name: 'Priority: critical',
           color: 'f58484',
         },
         {
